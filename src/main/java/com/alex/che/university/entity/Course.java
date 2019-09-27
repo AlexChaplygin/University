@@ -24,6 +24,6 @@ public class Course {
     @Column(name = "description")
     private String description;
 
-    @ManyToMany(mappedBy = "courseStudent")
-    List<Student> course;
+    @ManyToMany(mappedBy = "courseStudent", cascade = {CascadeType.MERGE})
+    List<Student> students;
 }

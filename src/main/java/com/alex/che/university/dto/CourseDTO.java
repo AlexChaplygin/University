@@ -14,5 +14,5 @@ public class CourseDTO {
     private Long id;
     private String title;
     private String description;
-    List<StudentDTO> course;
+    List<StudentDTO> students;
 }
