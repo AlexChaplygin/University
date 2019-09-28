@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @Service
 @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
@@ -30,8 +31,14 @@ public class CourseServiceImpl implements CourseService {
 
     @Override
     public CourseDTO findCourseByTitle(String title) {
-        Course student = courseRepository.findCourseByTitle(title);
-        return convert(student);
+        Course course = courseRepository.findCourseByTitle(title);
+        return convert(course);
+    }
+
+    @Override
+    public CourseDTO findCourseById(Long id) {
+        Course course = courseRepository.getOne(id);
+        return convert(course);
     }
 
     @Override
@@ -53,8 +60,8 @@ public class CourseServiceImpl implements CourseService {
     }
 
     private CourseDTO convert(Course course) {
-        List<StudentDTO> studentDTOS =
-                mapper.map(course.getStudents(), new TypeToken<List<StudentDTO>>() {
+        Set<StudentDTO> studentDTOS =
+                mapper.map(course.getStudents(), new TypeToken<Set<StudentDTO>>() {
                 }.getType());
         CourseDTO dto = mapper.map(course, CourseDTO.class);
         dto.setStudents(studentDTOS);

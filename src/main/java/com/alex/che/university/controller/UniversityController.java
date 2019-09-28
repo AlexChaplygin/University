@@ -25,19 +25,19 @@ public class UniversityController {
         this.courseService = courseService;
     }
 
-    @GetMapping("/student/{name}")
-    public ResponseEntity<StudentDTO> getStudent(@PathVariable String name) {
-        return ResponseEntity.ok(studentService.findStudentByName(name));
+    @GetMapping("/student/{id}")
+    public ResponseEntity<StudentDTO> getStudentById(@PathVariable Long id) {
+        return ResponseEntity.ok(studentService.findStudentById(id));
     }
 
     @GetMapping("/students")
-    public ResponseEntity<List<StudentDTO>> getStudents() {
-        return ResponseEntity.ok(studentService.findAllStudents());
+    public List<StudentDTO> getStudents() {
+        return studentService.findAllStudents();
     }
 
-    @GetMapping("/course/{title}")
-    public ResponseEntity<CourseDTO> getCourse(@PathVariable String title) {
-        return ResponseEntity.ok(courseService.findCourseByTitle(title));
+    @GetMapping("/course/{id}")
+    public ResponseEntity<CourseDTO> getCourseById(@PathVariable Long id) {
+        return ResponseEntity.ok(courseService.findCourseById(id));
     }
 
     @GetMapping("/courses")

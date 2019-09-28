@@ -8,6 +8,8 @@ public interface CourseService {
 
     CourseDTO findCourseByTitle(String title);
 
+    CourseDTO findCourseById(Long id);
+
     List<CourseDTO> findAllCourses();
 
     void saveCourse(CourseDTO courseDTO);

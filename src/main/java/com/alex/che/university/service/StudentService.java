@@ -8,6 +8,8 @@ public interface StudentService {
 
     StudentDTO findStudentByName(String name);
 
+    StudentDTO findStudentById(Long id);
+
     List<StudentDTO> findAllStudents();
 
     void saveStudent(StudentDTO studentDTO);

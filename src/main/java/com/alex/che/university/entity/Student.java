@@ -2,15 +2,13 @@ package com.alex.che.university.entity;
 
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 
 import javax.persistence.*;
-import java.util.List;
+import java.util.Set;
 
 @Entity
 @Getter
 @Setter
-@ToString
 @Table(name = "student")
 public class Student {
 
@@ -26,5 +24,5 @@ public class Student {
             name = "course_student",
             joinColumns = @JoinColumn(name = "student_id"),
             inverseJoinColumns = @JoinColumn(name = "course_id"))
-    List<Course> courseStudent;
+    Set<Course> courses;
 }

@@ -2,15 +2,13 @@ package com.alex.che.university.entity;
 
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 
 import javax.persistence.*;
-import java.util.List;
+import java.util.Set;
 
 @Entity
 @Getter
 @Setter
-@ToString
 @Table(name = "course")
 public class Course {
 
@@ -24,6 +22,6 @@ public class Course {
     @Column(name = "description")
     private String description;
 
-    @ManyToMany(mappedBy = "courseStudent", cascade = {CascadeType.MERGE})
-    List<Student> students;
+    @ManyToMany(mappedBy = "courses", cascade = {CascadeType.MERGE})
+    Set<Student> students;
 }
